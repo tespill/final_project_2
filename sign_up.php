@@ -45,7 +45,7 @@
 ?>
 
 
-<form method="post" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <label for="email">Email:</label>
         <input type="text" id="email" name="email" value="<?php if (!empty($email)) echo $email; ?>" /><br />
         <label for="password1">Password:</label>
