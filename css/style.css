@@ -1,0 +1,29 @@
+/*  CSS FOR THE BASIC LAYOUT OF THE SITE.                        */
+/*  CSS FOR JQUERY AND BOOTSTRAP ELEMENTS ARE IN THEIR OWN FILES */
+/*  Set black background color, white text and some padding      */
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+
+}
+
+#main {
+    background-color: #c7254e;
+    width: 85%;
+    float: right;
+}
+
+body {
+    background-color: #080808;
+}
+
+#top {
+    background-color: #080808;
+}
+
+#navigation{
+    width: 250px;
+    position: fixed;
+    float: right;
+}
