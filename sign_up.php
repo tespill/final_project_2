@@ -54,3 +54,6 @@
         <input type="password" id="password2" name="password2" /><br />
     <input type="submit" value="Sign Up" name="submit" />
 </form>
+
+<a href="sign_in.php">Sign In</a>
+<a href="logout.php">Log Out</a>
