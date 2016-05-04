@@ -1,10 +1,10 @@
 <?php
-    $title = 'Sign Up';
-    require_once('include/connect.php');
+    $title = 'SideKicK - Sign Up';
     require_once('structure/header.php');
+    require_once('include/connect.php');
 
     if (isset($_POST['submit'])) {
-        // Grab the profile data from the POST
+        // Grab the profile data from the Sign-Up form
         $email = trim($_POST['email']);
         $password1 = trim($_POST['password1']);
         $password2 = trim($_POST['password2']);
@@ -13,7 +13,7 @@
             // Connect to the database
             $dbh = new PDO("mysql:host=$db_hostname;dbname=sidekick", $db_username, $db_password);
 
-            // Make sure someone isn't already registered using this username
+            // Check is user already exists
             $query = "SELECT * FROM user WHERE email = :email";
             $stmt = $dbh->prepare($query);
             $stmt->execute(array('email' => $email));
@@ -21,7 +21,7 @@
             $count = $stmt->rowCount();
 
             if ($count == 0) {
-                // The username is unique, so insert the data into the database
+                // The user does not exist, so create an account
                 $query = "INSERT INTO user (email, password) VALUES (:email, SHA(:password))";
                 $stmt = $dbh->prepare($query);
                 $stmt->execute(array(

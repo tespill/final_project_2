@@ -1,6 +1,7 @@
 <?php
     $title = 'SideKicK - Home';
     require_once('structure/header.php');
+
 ?>
 
 <body>
@@ -20,7 +21,7 @@
                 <a href="#">Shortcuts</a>
             </li>
             <li>
-                <a href="#">Overview</a>
+                <a href="sign_up.php">Sign Up</a>
             </li>
             <li>
                 <a href="#">Events</a>
