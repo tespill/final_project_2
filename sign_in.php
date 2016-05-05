@@ -109,21 +109,6 @@
                     <a href="sign_up.php">Sign Up</a>
                     <a href="logout.php">Log Out</a>
                 </div>
-                <div id="right" class="col-sm-2 well">
-                    <div class="thumbnail">
-                        <p>Upcoming Events:</p>
-                        <img src="paris.jpg" alt="Paris" width="400" height="300">
-                        <p><strong>Paris</strong></p>
-                        <p>Fri. 27 November 2015</p>
-                        <button class="btn btn-primary">Info</button>
-                    </div>
-                    <div class="well">
-                        <p>ADS</p>
-                    </div>
-                    <div class="well">
-                        <p>ADS</p>
-                    </div>
-                </div>
             </div>
         </div>
 
