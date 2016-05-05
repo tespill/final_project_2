@@ -38,8 +38,8 @@
                     $_SESSION['email'] = $email;
                     setcookie('user_id', $user_id, time() + (60 * 60 * 24 * 30));    // expires in 30 days
                     setcookie('email', $email, time() + (60 * 60 * 24 * 30));  // expires in 30 days
- //                   $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/index.php';
- //                   header('Location: ' . $home_url);
+                    $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/index.php';
+                    header('Location: ' . $home_url);
                 } else {
                     // The username/password are incorrect so set an error message
                     $error_msg = 'Sorry, you must enter a valid username and password to log in.';

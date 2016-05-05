@@ -1,9 +1,9 @@
 <?php
-    require_once('include/authorize.php');
+    require_once('include/start_session.php');
     $title = 'SideKicK - Edit Profile';
     require_once('structure/header.php');
     require_once('include/connect.php');
-
+    $message = '';
     // Connect to database
     $dbh = new PDO("mysql:host=$db_hostname;dbname=sidekick", $db_username, $db_password);
 
@@ -13,7 +13,17 @@
         $name_first  = trim($_POST['name_first']);
         $name_last   = trim($_POST['name_last']);
         $username    = trim($_POST['username']);
-        $new_picture = trim($_FILES['new_picture']);
+        //$new_picture = trim($_FILES['new_picture']);
+
+        $query = "UPDATE user_info SET name_first = :name_first, name_last = :name_last, username = :username WHERE user_id = :user_id";
+        $stmt = $dbh->prepare($query);
+        $stmt->execute(array(
+           'name_first' => $name_first,
+            'name_last' => $name_last,
+            'username'  => $username,
+            'user_id'   => $_SESSION['user_id']
+        ));
+        $message = 'User updated.';
     } else {
         // The user is viewing their own profile
         $user_id = $_SESSION['user_id'];
@@ -38,6 +48,7 @@
             echo '<p>There was a problem accessing your profile.</p>';
         }
     }
+    echo $message;
 ?>
     <body>
         <form enctype="multipart/form-data" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
