@@ -18,7 +18,7 @@
                 <a href="#">Dashboard</a>
             </li>
             <li>
-                <a href="#">Shortcuts</a>
+                <a href="profile.php">Profile</a>
             </li>
             <li>
                 <a href="sign_up.php">Sign Up</a>

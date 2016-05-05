@@ -1,5 +1,5 @@
 <?php
-    require_once('include/authorize.php');
+    require_once('include/start_session.php');
     $title = 'SideKicK - Sign Up';
     require_once('structure/header.php');
     require_once('include/connect.php');
@@ -24,6 +24,7 @@
     if ($count == 1) {
         // Then a unique user was found
         $row = $result[0];
+        $path = "uploads/". $row['picture'];
         if (!empty($row['username'])) {
             echo $row['username'];
         }
@@ -31,9 +32,11 @@
             echo $row['birthdate'];
         }
         if (!empty($row['picture'])) {
-            echo '<img src="uploads/' . $row['picture'] . '"" />';
+            echo "<img src='$path' />";
         } else {
             echo '<img src="images/nopic.png" />';
         }
     }
+
+    echo '<a href="edit_profile.php">edit profile</a>';
 ?>
