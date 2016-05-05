@@ -61,16 +61,88 @@
     if (empty($_SESSION['user_id'])) {
         echo '<p class="error">' . $error_msg . '</p>';
         ?>
-        <h3>Sign In</h3>
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                <label for="email">Email:</label>
-                <input type="text" name="email" value="<?php if (!empty($email)) echo $email; ?>" /><br />
-                <label for="password">Password:</label>
-                <input type="password" name="password" />
-            <input type="submit" value="Log In" name="submit" />
-        </form>
-        <a href="sign_up.php">Sign Up</a>
-        <a href="logout.php">Log Out</a>
+
+        <body>
+        <!-- START OF NAVIGATION BAR -->
+        <div id="navigation">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#">
+                            <img src="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php">Home</a>
+                    </li>
+                    <li>
+                        <a href="sign_in.php">Log In</a>
+                    </li>
+                    <li>
+                        <a href="sign_up.php">Sign Up</a>
+                    </li>
+                    <li>
+                        <a href="profile.php">My Profile</a>
+                    </li>
+                    <li>
+                        <a href="edit_profile.php">Edit Profile</a>
+                    </li>
+                    <li>
+                        <a href="logout.php">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!---  END OF NAVIGATION BAR -->
+
+        <div id="main" class="container text-center">
+            <div class="row">
+                <div class="col-sm-7">
+                    <h3>Sign In</h3>
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" value="<?php if (!empty($email)) echo $email; ?>" /><br />
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" />
+                        <input type="submit" value="Log In" name="submit" />
+                    </form>
+                    <a href="sign_up.php">Sign Up</a>
+                    <a href="logout.php">Log Out</a>
+                </div>
+                <div id="right" class="col-sm-2 well">
+                    <div class="thumbnail">
+                        <p>Upcoming Events:</p>
+                        <img src="paris.jpg" alt="Paris" width="400" height="300">
+                        <p><strong>Paris</strong></p>
+                        <p>Fri. 27 November 2015</p>
+                        <button class="btn btn-primary">Info</button>
+                    </div>
+                    <div class="well">
+                        <p>ADS</p>
+                    </div>
+                    <div class="well">
+                        <p>ADS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="container-fluid text-center">
+            <p>Footer Text</p>
+        </footer>
+
+        <!-- /#wrapper -->
+
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+        </body>
+        </html>
+
+
 
         <?php
     } else {
