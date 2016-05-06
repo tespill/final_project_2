@@ -39,9 +39,9 @@ if (count($results) == 0) {
 if (isset($_POST['submit'])) {
 
     foreach ($_POST as $responses_id => $response) {
-        $query = "UPDATE responses SET response = :response WHERE response_id = :response_id";
+        $query = "UPDATE responses SET responses = :responses WHERE responses_id = :responses_id";
         $stmt = $dbh->prepare($query);
-        $stmt->execute(array("response" => $response, "responses_id" => $responses_id));
+        $stmt->execute(array("responses" => $responses, "responses_id" => $responses_id));
     }
     echo '<p>Your responses have been saved.</p>';
 }
@@ -70,16 +70,16 @@ echo '<form method="post" action="' . $_SERVER['PHP_SELF'] . '">';
 echo '<p>How do you feel about each topic?</p>';
 $category = $responses[0]['category_name'];
 echo '<fieldset><legend>' . $responses[0]['category_name'] . '</legend>';
-foreach ($responses as $response) {
+foreach ($responses as $responses) {
 
-    if ($category != $response['category_name']) {
-        $category = $response['category_name'];
-        echo '</fieldset><fieldset><legend>' . $response['category_name'] . '</legend>';
+    if ($category != $responses['category_name']) {
+        $category = $responses['category_name'];
+        echo '</fieldset><fieldset><legend>' . $responses['category_name'] . '</legend>';
     }
 
-    echo '<label ' . ($response['response'] == NULL ? 'class="error"' : '') . ' for="' . $response['response_id'] . '">' . $response['topic_name'] . ':</label>';
-    echo '<input type="radio" id="' . $response['response_id'] . '" name="' . $response['response_id'] . '" value="1" ' . ($response['response'] == 1 ? 'checked="checked"' : '') . ' />Love ';
-    echo '<input type="radio" id="' . $response['response_id'] . '" name="' . $response['response_id'] . '" value="2" ' . ($response['response'] == 2 ? 'checked="checked"' : '') . ' />Hate<br />';
+    echo '<label ' . ($responses['response'] == NULL ? 'class="error"' : '') . ' for="' . $responses['response_id'] . '">' . $responses['topic_name'] . ':</label>';
+    echo '<input type="radio" id="' . $responses['responses_id'] . '" name="' . $responses['responses_id'] . '" value="1" ' . ($responses['responses'] == 1 ? 'checked="checked"' : '') . ' />Love ';
+    echo '<input type="radio" id="' . $responses['responses_id'] . '" name="' . $responses['responses_id'] . '" value="2" ' . ($responses['responses'] == 2 ? 'checked="checked"' : '') . ' />Hate<br />';
 }
 echo '</fieldset>';
 echo '<input type="submit" value="Save Questionnaire" name="submit" />';
