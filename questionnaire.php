@@ -2,7 +2,7 @@
 // Start the session
 require_once('include/start_session.php');
 // Insert the page header
-$page_title = 'Questionnaire';
+$title = 'Questionnaire';
 require_once('include/connect.php');
 require_once('structure/header.php');
 
