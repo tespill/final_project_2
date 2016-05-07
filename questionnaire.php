@@ -65,24 +65,80 @@ foreach ($results as $row) {
         array_push($responses, $row);
     }
 }
-
-echo '<form method="post" action="' . $_SERVER['PHP_SELF'] . '">';
-echo '<p>How do you feel about each topic?</p>';
-$category = $responses[0]['category_name'];
-echo '<fieldset><legend>' . $responses[0]['category_name'] . '</legend>';
-foreach ($responses as $responses) {
-
-    if ($category != $responses['category_name']) {
-        $category = $responses['category_name'];
-        echo '</fieldset><fieldset><legend>' . $responses['category_name'] . '</legend>';
-    }
-
-    echo '<label ' . ($responses['responses'] == NULL ? 'class="error"' : '') . ' for="' . $responses['responses_id'] . '">' . $responses['topic_name'] . ':</label>';
-    echo '<input type="radio" id="' . $responses['responses_id'] . '" name="' . $responses['responses_id'] . '" value="1" ' . ($responses['responses'] == 1 ? 'checked="checked"' : '') . ' />Love ';
-    echo '<input type="radio" id="' . $responses['responses_id'] . '" name="' . $responses['responses_id'] . '" value="2" ' . ($responses['responses'] == 2 ? 'checked="checked"' : '') . ' />Hate<br />';
-}
-echo '</fieldset>';
-echo '<input type="submit" value="Save Questionnaire" name="submit" />';
-echo '</form>';
-
 ?>
+
+<body>
+<!-- START OF NAVIGATION BAR -->
+<div id="navigation">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    <img src="">
+                </a>
+            </li>
+            <li>
+                <a href="index.php">Home</a>
+            </li>
+            <li>
+                <a href="sign_in.php">Log In</a>
+            </li>
+            <li>
+                <a href="sign_up.php">Sign Up</a>
+            </li>
+            <li>
+                <a href="profile.php">My Profile</a>
+            </li>
+            <li>
+                <a href="edit_profile.php">Edit Profile</a>
+            </li>
+            <li>
+                <a href="logout.php">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!---  END OF NAVIGATION BAR -->
+
+<div id="main" class="container text-center">
+    <div class="row">
+
+        <?php
+        echo '<form method="post" action="' . $_SERVER['PHP_SELF'] . '">';
+            echo '<p>How do you feel about each topic?</p>';
+            $category = $responses[0]['category_name'];
+            echo '<fieldset><legend>' . $responses[0]['category_name'] . '</legend>';
+                foreach ($responses as $responses) {
+
+                if ($category != $responses['category_name']) {
+                $category = $responses['category_name'];
+                echo '</fieldset><fieldset><legend>' . $responses['category_name'] . '</legend>';
+                }
+
+                echo '<label ' . ($responses['responses'] == NULL ? 'class="error"' : '') . ' for="' . $responses['responses_id'] . '">' . $responses['topic_name'] . ':</label>';
+                echo '<input type="radio" id="' . $responses['responses_id'] . '" name="' . $responses['responses_id'] . '" value="1" ' . ($responses['responses'] == 1 ? 'checked="checked"' : '') . ' />Love ';
+                echo '<input type="radio" id="' . $responses['responses_id'] . '" name="' . $responses['responses_id'] . '" value="2" ' . ($responses['responses'] == 2 ? 'checked="checked"' : '') . ' />Hate<br />';
+                }
+                echo '</fieldset>';
+            echo '<input type="submit" value="Save Questionnaire" name="submit" />';
+            echo '</form>';
+        ?>
+
+        
+    </div>
+</div>
+
+<footer class="container-fluid text-center">
+    <p>Footer Text</p>
+</footer>
+
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
