@@ -77,7 +77,7 @@ foreach ($responses as $responses) {
         echo '</fieldset><fieldset><legend>' . $responses['category_name'] . '</legend>';
     }
 
-    echo '<label ' . ($responses['response'] == NULL ? 'class="error"' : '') . ' for="' . $responses['response_id'] . '">' . $responses['topic_name'] . ':</label>';
+    echo '<label ' . ($responses['responses'] == NULL ? 'class="error"' : '') . ' for="' . $responses['responses_id'] . '">' . $responses['topic_name'] . ':</label>';
     echo '<input type="radio" id="' . $responses['responses_id'] . '" name="' . $responses['responses_id'] . '" value="1" ' . ($responses['responses'] == 1 ? 'checked="checked"' : '') . ' />Love ';
     echo '<input type="radio" id="' . $responses['responses_id'] . '" name="' . $responses['responses_id'] . '" value="2" ' . ($responses['responses'] == 2 ? 'checked="checked"' : '') . ' />Hate<br />';
 }
