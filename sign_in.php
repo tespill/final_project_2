@@ -55,13 +55,13 @@
     $page_title = 'Log In';
     require_once('structure/header.php');
 
-    echo $_SESSION['user_id'];
+    if (isset($_SESSION['user_id'])) {
+        echo $_SESSION['user_id'];
+    }
 
     // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
     if (empty($_SESSION['user_id'])) {
-        echo '<p class="error">' . $error_msg . '</p>';
         ?>
-
         <body>
         <!-- START OF NAVIGATION BAR -->
         <div id="navigation">
@@ -137,7 +137,3 @@
     }
 ?>
 
-<?php
-// Insert the page footer
-//require_once('footer.php');
-?>

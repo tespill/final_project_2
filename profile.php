@@ -4,6 +4,13 @@
     require_once('structure/header.php');
     require_once('include/connect.php');
 
+    // Make sure the user is logged in before going any further.
+    if (!isset($_SESSION['user_id'])) {
+        $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/sign_in.php';
+        header('Location: ' . $home_url);
+        exit();
+    }
+
     // Connect to database
     $dbh = new PDO("mysql:host=$db_hostname;dbname=sidekick", $db_username, $db_password);
 
@@ -15,7 +22,7 @@
         $user_id = $_SESSION['user_id'];
     }
 
-    $query = "SELECT i.username, u.id, i.picture, CONCAT(name_first, ' ', name_last) FROM user u LEFT JOIN user_info i ON u.id = i.user_id WHERE u.id = :user_id";
+    $query = "SELECT i.username, u.id as user_id, i.picture, i.bio, CONCAT(name_first, ' ', name_last) as name FROM user u LEFT JOIN user_info i ON u.id = i.user_id WHERE u.id = :user_id";
     $stmt = $dbh->prepare($query);
     $stmt->execute(array('user_id' => $user_id));
     $result = $stmt->fetchAll();
@@ -28,11 +35,22 @@
         if (!empty($row['username'])) {
             $username = $row['username'];
         }
-        $user_id_pull = $row['id'];
+        if (!empty($row['name'])) {
+            $name = $row['name'];
+        }
+        if (!empty($row['bio'])) {
+            $bio = $row['bio'];
+        }
+        $user_id_pull = $row['user_id'];
     }
+
+    // Pull all of their matches from the database
+    $query = "SELECT i.username, u.id as user_id, i.picture, i.bio, CONCAT(name_first, ' ', name_last) as name FROM user u LEFT JOIN user_info i ON u.id = i.user_id WHERE 1 = 1";
+    $stmt = $dbh->prepare($query);
+    $stmt->execute();
+    $matches = $stmt->fetchAll();
 ?>
 
-<body>
 <!-- START OF NAVIGATION BAR -->
 <div id="navigation">
     <div id="sidebar-wrapper">
@@ -81,75 +99,41 @@
                     </div>
                 </div>
             </div>
+            <?php foreach($matches as $match){ ?>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="well">
+                            <p><a href="profile.php?user_id=<?php echo $match['user_id'] ?>"><?php if (!empty($match['username'])) echo $match['username']; else echo '<i>No Username</i>' ?></a></p>
+                            <?php if (!empty($match['picture'])) {
+                                echo "<img src='$path' class='img-circle' height='55' width='55' alt='Avatar' />";
+                            } else {
+                                echo '<img src="images/nopic.jpg" class="img-circle" height="55" width="55" alt="Avatar" />';
+                            } ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="well">
+                            <p><?php if (!empty($match['bio'])) echo $match['bio']; else echo '<i>No Bio</i>' ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
 
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="well">
-                        <p>John</p>
-                        <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-                    </div>
-                </div>
-                <div class="col-sm-9">
-                    <div class="well">
-                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="well">
-                        <p>Bo</p>
-                        <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-                    </div>
-                </div>
-                <div class="col-sm-9">
-                    <div class="well">
-                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="well">
-                        <p>Jane</p>
-                        <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-                    </div>
-                </div>
-                <div class="col-sm-9">
-                    <div class="well">
-                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="well">
-                        <p>Anja</p>
-                        <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-                    </div>
-                </div>
-                <div class="col-sm-9">
-                    <div class="well">
-                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-                    </div>
-                </div>
-            </div>
         </div>
         <div id="right" class="col-sm-2 well">
             <div class="thumbnail">
                 <?php if (!empty($row['picture'])) {
                     echo "<img src='$path' />";
                 } else {
-                    echo '<img src="images/nopic.png" />';
+                    echo '<img src="images/nopic.jpg" />';
                 } ?>
-                <p><strong><?php echo $username ?></strong></p>
-                <p>Fri. 27 November 2015</p>
+                <p><strong><?php if (!empty($username)) echo $username ?></strong></p>
+                <p><strong><?php if (!empty($name)) echo $name ?></strong></p>
             </div>
             <div class="well">
-                <p>ADS</p>
+                <p><?php if (!empty($bio)) echo $bio; ?></p>
             </div>
             <div class="well">
-                <p>ADS</p>
                 <?php if ($_SESSION['user_id'] == $user_id_pull) {
                     // The user is logged in
                     // Show the button to edit their profile
