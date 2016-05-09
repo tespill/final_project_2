@@ -1,6 +1,6 @@
 <?php
-    $title = 'SideKicK - Home';
-    require_once('structure/header.php');
+$title = 'SideKicK - Home';
+require_once('structure/header.php');
 
 ?>
 
@@ -63,7 +63,8 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="well">
-                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot
+                            something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
                     </div>
                 </div>
             </div>
@@ -76,7 +77,8 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="well">
-                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot
+                            something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
                     </div>
                 </div>
             </div>
@@ -89,7 +91,8 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="well">
-                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot
+                            something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
                     </div>
                 </div>
             </div>
@@ -102,7 +105,8 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="well">
-                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot
+                            something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
                     </div>
                 </div>
             </div>
