@@ -105,7 +105,7 @@
                         <div class="well">
                             <p><a href="profile.php?user_id=<?php echo $match['user_id'] ?>"><?php if (!empty($match['username'])) echo $match['username']; else echo '<i>No Username</i>' ?></a></p>
                             <?php if (!empty($match['picture'])) {
-                                echo "<img src='$path' class='img-circle' height='55' width='55' alt='Avatar' />";
+                                echo "<img src='uploads/" . $match['picture'] . " class='img-circle' height='55' width='55' alt='Avatar' />";
                             } else {
                                 echo '<img src="images/nopic.jpg" class="img-circle" height="55" width="55" alt="Avatar" />';
                             } ?>

@@ -54,20 +54,71 @@
             }
         }
     ?>
+        <body>
+        <!-- START OF NAVIGATION BAR -->
+        <div id="navigation">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#">
+                            <img src="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php">Home</a>
+                    </li>
+                    <li>
+                        <a href="sign_in.php">Log In</a>
+                    </li>
+                    <li>
+                        <a href="sign_up.php">Sign Up</a>
+                    </li>
+                    <li>
+                        <a href="profile.php">My Profile</a>
+                    </li>
+                    <li>
+                        <a href="edit_profile.php">Edit Profile</a>
+                    </li>
+                    <li>
+                        <a href="logout.php">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!---  END OF NAVIGATION BAR -->
 
+        <div id="main" class="container text-center">
+            <div class="row">
+                <div class="col-sm-7">
+                    <h3>Sign In</h3>
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" value="<?php if (!empty($email)) echo $email; ?>" /><br />
+                        <label for="password1">Password:</label>
+                        <input type="password" id="password1" name="password1" /><br />
+                        <label for="password2">Password (retype):</label>
+                        <input type="password" id="password2" name="password2" /><br />
+                        <input type="submit" value="Sign Up" name="submit" />
+                    </form>
+                    <a href="sign_up.php">Sign Up</a>
+                    <a href="logout.php">Log Out</a>
+                </div>
+            </div>
+        </div>
 
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" value="<?php if (!empty($email)) echo $email; ?>" /><br />
-            <label for="password1">Password:</label>
-            <input type="password" id="password1" name="password1" /><br />
-            <label for="password2">Password (retype):</label>
-            <input type="password" id="password2" name="password2" /><br />
-        <input type="submit" value="Sign Up" name="submit" />
-    </form>
+        <footer class="container-fluid text-center">
+            <p>Footer Text</p>
+        </footer>
 
-    <a href="sign_in.php">Sign In</a>
-    <a href="logout.php">Log Out</a>
+        <!-- /#wrapper -->
+
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+        </body>
 <?php
     } else {
         // They are already logged in
