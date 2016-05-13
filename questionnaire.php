@@ -13,13 +13,6 @@
 
     $dbh = new PDO("mysql:host=$db_hostname;dbname=sidekick", $db_username, $db_password);
 
-    // PULL ALL QUESTIONS FROM THE DATABASE
-    $query = "SELECT * FROM questions ORDER BY topic_id";
-    $stmt = $dbh->prepare($query);
-    $stmt->execute();
-    $result = $stmt->fetchAll();
-    $count = $stmt->rowCount();
-
     // PULL ALL RESPONSES FROM THE DATABASE
     $query = "SELECT * FROM responses WHERE user_id = :user_id";
     $stmt = $dbh->prepare($query);
@@ -60,28 +53,31 @@
     }
 
     // PULL THE DATA FROM THE DATABASE TO GENERATE THE FORM
-    $query = "SELECT id, question_id, response FROM responses WHERE user_id = '" . $_SESSION['user_id'] . "'";
+//    foreach ($results as $row) {
+//        // Look up the topic name for the response from the topic table
+//        $query2 = "SELECT r.id, r.question_id, r.response, t.topic, q.question FROM responses AS r " .
+//            "INNER JOIN questions AS q  " .
+//            "INNER JOIN topics AS t  " .
+//            "WHERE r.user_id = :user_id";
+//        $stmt2 = $dbh->prepare($query2);
+//        $stmt2->execute(array('user_id' => $_SESSION['user_id']));
+//        $results2 = $stmt2->fetchAll();
+//
+//        $responses = array();
+//        foreach ($results2 as $row) {
+//            array_push($responses, $row);
+//        }
+//    }
+
+    $query = "SELECT r.id, r.question_id, r.response, q.question, t.topic FROM responses AS r INNER JOIN questions AS q INNER JOIN topics AS t WHERE r.user_id = '" . $_SESSION['user_id'] . "'";
     $stmt = $dbh->prepare($query);
     $stmt->execute();
-    $responses = array();
     $results = $stmt->fetchAll();
+    $responses = array();
+
     foreach ($results as $row) {
-        // Look up the topic name for the response from the topic table
-        $query2 = "SELECT r.id, r.question_id, r.response, t.topic, q.question " .
-            "FROM responses AS r " .
-            "INNER JOIN questions AS q USING (id) " .
-            "INNER JOIN topics AS t USING (id) " .
-            "WHERE r.user_id = '" . $_SESSION['user_id'] . "'";
-        $stmt2 = $dbh->prepare($query2);
-        $stmt2->execute();
-        $results2 = $stmt2->fetchAll();
-
-        $responses = array();
-        foreach ($results2 as $r) {
-            array_push($responses, $r);
-        }
+        array_push($responses, $row);
     }
-
 ?>
 
 <body>
@@ -121,6 +117,7 @@
     <div class="row">
         <!-- Form -->
         <?php
+
             // Generate the questionnaire form by looping through the response array
             echo '<form method="post" action="' . $_SERVER['PHP_SELF'] . '">';
             echo '<p>How do you feel about each topic?</p>';
@@ -133,9 +130,9 @@
                     echo '</fieldset><fieldset><legend>' . $response['topic'] . '</legend>';
                 }
                 // Display the topic form field
-                echo '<label ' . ($response['response'] == NULL ? 'class="error"' : '') . ' for="' . $response['id'] . '">' . $response[''] . ':</label>';
-                echo '<input type="radio" id="' . $response['id'] . '" name="' . $response['id'] . '" value="1" ' . ($response['response'] == 1 ? 'checked="checked"' : '') . ' />Love ';
-                echo '<input type="radio" id="' . $response['id'] . '" name="' . $response['id'] . '" value="2" ' . ($response['response'] == 2 ? 'checked="checked"' : '') . ' />Hate<br />';
+                echo '<label ' . ($response['response'] == NULL ? 'class="error"' : '') . ' for="' . $response['id'] . '">' . $response['question'] . ':</label>';
+                echo '<input type="radio" id="' . $response['id'] . '" name="' . $response['id'] . '" value="1" ' . ($response['response'] == 1 ? 'checked="checked"' : '') . ' />Yes ';
+                echo '<input type="radio" id="' . $response['id'] . '" name="' . $response['id'] . '" value="2" ' . ($response['response'] == 2 ? 'checked="checked"' : '') . ' />No<br />';
             }
             echo '</fieldset>';
             echo '<input type="submit" value="Save Questionnaire" name="submit" />';
