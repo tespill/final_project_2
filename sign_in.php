@@ -62,6 +62,11 @@
     // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
     if (empty($_SESSION['user_id'])) {
         ?>
+        <html>
+        <head>
+        <script src="sign_in.js"></script>
+        <link rel="stylesheet" type="text/css" href="sign_in.css">
+        </head>
         <body>
         <!-- START OF NAVIGATION BAR -->
         <div id="navigation">
@@ -94,14 +99,38 @@
             </div>
         </div>
         <!---  END OF NAVIGATION BAR -->
+<?php echo $_SERVER['PHP_SELF']; ?>
+<?php if (!empty($email)) echo $email; ?>
 
-        <div id="main" class="container text-center">
+    <div class="container">
+        <div id="cardcontainer" class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email" value="<?php if (!empty($email)) echo $email; ?>" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form>
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+
+
+       <!-- <div id="main" class="container text-center">
             <div class="row">
                 <div class="col-sm-7">
                     <h3>Sign In</h3>
-                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <form method="post" action="php">
                         <label for="email">Email:</label>
-                        <input type="text" name="email" value="<?php if (!empty($email)) echo $email; ?>" /><br />
+                        <input type="text" name="email" value="php" /><br />
                         <label for="password">Password:</label>
                         <input type="password" name="password" />
                         <input type="submit" value="Log In" name="submit" />
@@ -111,10 +140,7 @@
                 </div>
             </div>
         </div>
-
-        <footer class="container-fluid text-center">
-            <p>Footer Text</p>
-        </footer>
+        -->
 
         <!-- /#wrapper -->
 

@@ -54,9 +54,55 @@
             }
         }
     ?>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="sign_up.css">
+</head>
+        <div class="container">
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-horizontal" role="form">
+                <h2>Registration Form</h2>
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">Full Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="firstName" placeholder="Full Name" class="form-control" required autofocus>
+                        <div class="help-block with-errors"></div>
+                        <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" id="email" placeholder="Email" value="<?php if (!empty($email)) echo $email; ?>" class="form-control" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="Password" class="form-control" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
+                    <div class="col-sm-9">
+                        <input type="date" id="birthDate" class="form-control" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </div>
+                </div>
+            </form> <!-- /form -->
+            <a id="signin" href="sign_in.php">Sign In</a>
+            <a id="signout" href="logout.php">Log Out</a>
+        </div> <!-- ./container -->
 
 
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+</html>
+    <!--<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" value="<?php if (!empty($email)) echo $email; ?>" /><br />
             <label for="password1">Password:</label>
@@ -68,6 +114,7 @@
 
     <a href="sign_in.php">Sign In</a>
     <a href="logout.php">Log Out</a>
+    -->
 <?php
     } else {
         // They are already logged in

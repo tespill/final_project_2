@@ -1,0 +1,21 @@
+body {
+    background-color: #eee;
+}
+
+*[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 0.3em;
+    margin-top: 15%;
+}
+
+*[role="form"] h2 {
+    margin-left: 5em;
+    margin-bottom: 1em;
+}
+
+#signin, #signout {
+    margin-left: 30%;
+}
