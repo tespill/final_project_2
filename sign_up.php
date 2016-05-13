@@ -54,6 +54,7 @@
             }
         }
     ?>
+<<<<<<< HEAD
         <body>
         <!-- START OF NAVIGATION BAR -->
         <div id="navigation">
@@ -86,6 +87,53 @@
             </div>
         </div>
         <!---  END OF NAVIGATION BAR -->
+=======
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="sign_up.css">
+</head>
+        <div class="container">
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-horizontal" role="form">
+                <h2>Registration Form</h2>
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">Full Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="firstName" placeholder="Full Name" class="form-control" required autofocus>
+                        <div class="help-block with-errors"></div>
+                        <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" id="email" placeholder="Email" value="<?php if (!empty($email)) echo $email; ?>" class="form-control" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="Password" class="form-control" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
+                    <div class="col-sm-9">
+                        <input type="date" id="birthDate" class="form-control" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </div>
+                </div>
+            </form> <!-- /form -->
+            <a id="signin" href="sign_in.php">Sign In</a>
+            <a id="signout" href="logout.php">Log Out</a>
+        </div> <!-- ./container -->
+>>>>>>> ticket_5
 
         <div id="main" class="container text-center">
             <div class="row">
@@ -106,6 +154,7 @@
             </div>
         </div>
 
+<<<<<<< HEAD
         <footer class="container-fluid text-center">
             <p>Footer Text</p>
         </footer>
@@ -119,6 +168,22 @@
         <script src="js/bootstrap.min.js"></script>
 
         </body>
+=======
+</html>
+    <!--<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" value="<?php if (!empty($email)) echo $email; ?>" /><br />
+            <label for="password1">Password:</label>
+            <input type="password" id="password1" name="password1" /><br />
+            <label for="password2">Password (retype):</label>
+            <input type="password" id="password2" name="password2" /><br />
+        <input type="submit" value="Sign Up" name="submit" />
+    </form>
+
+    <a href="sign_in.php">Sign In</a>
+    <a href="logout.php">Log Out</a>
+    -->
+>>>>>>> ticket_5
 <?php
     } else {
         // They are already logged in
