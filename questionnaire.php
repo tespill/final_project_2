@@ -22,7 +22,7 @@
 
     if ($count == 0) {
         // USER IS FILLING OUT THE FORM FOR THE FIRST TIME
-        $query = "SELECT id FROM questions ORDER BY topic_id";
+        $query = "SELECT id FROM questions ORDER BY topics_id";
         $stmt = $dbh->prepare($query);
         $stmt->execute();
         $result = $stmt->fetchAll();
@@ -34,8 +34,7 @@
 
         // INPUT EMPTY ROWS FOR EACH RESPONSE
         foreach ($question_ids as $question_id){
-            echo $question_id;
-            $query = "INSERT INTO responses (user_id, question_id) VALUES ('" . $_SESSION['user_id'] . "', :question_id)";
+            $query = "INSERT INTO responses (user_id, questions_id) VALUES ('" . $_SESSION['user_id'] . "', :question_id)";
             $stmt = $dbh->prepare($query);
             $stmt->execute(array('question_id'=>$question_id));
         }
@@ -53,28 +52,13 @@
     }
 
     // PULL THE DATA FROM THE DATABASE TO GENERATE THE FORM
-//    foreach ($results as $row) {
-//        // Look up the topic name for the response from the topic table
-//        $query2 = "SELECT r.id, r.question_id, r.response, t.topic, q.question FROM responses AS r " .
-//            "INNER JOIN questions AS q  " .
-//            "INNER JOIN topics AS t  " .
-//            "WHERE r.user_id = :user_id";
-//        $stmt2 = $dbh->prepare($query2);
-//        $stmt2->execute(array('user_id' => $_SESSION['user_id']));
-//        $results2 = $stmt2->fetchAll();
-//
-//        $responses = array();
-//        foreach ($results2 as $row) {
-//            array_push($responses, $row);
-//        }
-//    }
-
-    $query = "SELECT r.id, r.question_id, r.response, q.question, t.topic FROM responses AS r INNER JOIN questions AS q INNER JOIN topics AS t WHERE r.user_id = '" . $_SESSION['user_id'] . "'";
+    $query = "SELECT r.id, r.questions_id, r.response, q.question, t.topic FROM responses AS r INNER JOIN questions AS q INNER JOIN topics AS t WHERE r.user_id = '" . $_SESSION['user_id'] . "'";
     $stmt = $dbh->prepare($query);
     $stmt->execute();
     $results = $stmt->fetchAll();
     $responses = array();
-
+    $count = $stmt->rowCount();
+    echo $count;
     foreach ($results as $row) {
         array_push($responses, $row);
     }
@@ -117,7 +101,6 @@
     <div class="row">
         <!-- Form -->
         <?php
-
             // Generate the questionnaire form by looping through the response array
             echo '<form method="post" action="' . $_SERVER['PHP_SELF'] . '">';
             echo '<p>How do you feel about each topic?</p>';
