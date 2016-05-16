@@ -122,29 +122,6 @@
             </a>
         </div><!-- /card-container -->
     </div><!-- /container -->
-
-
-       <!-- <div id="main" class="container text-center">
-            <div class="row">
-                <div class="col-sm-7">
-                    <h3>Sign In</h3>
-                    <form method="post" action="php">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" value="php" /><br />
-                        <label for="password">Password:</label>
-                        <input type="password" name="password" />
-                        <input type="submit" value="Log In" name="submit" />
-                    </form>
-                    <a href="sign_up.php">Sign Up</a>
-                    <a href="logout.php">Log Out</a>
-                </div>
-            </div>
-        </div>
-        -->
-
-        <!-- /#wrapper -->
-
-        <!-- jQuery -->
         <script src="js/jquery.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
