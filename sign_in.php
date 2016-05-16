@@ -45,21 +45,16 @@
                     $error_msg = 'Sorry, you must enter a valid username and password to log in.';
                 }
             } else {
-                // The username/password weren't entered so set an error message
                 $error_msg = 'Sorry, you must enter your username and password to log in.';
             }
         }
     }
-
-    // Insert the page header
     $page_title = 'Log In';
     require_once('structure/header.php');
 
     if (isset($_SESSION['user_id'])) {
         echo $_SESSION['user_id'];
     }
-
-    // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
     if (empty($_SESSION['user_id'])) {
         ?>
         <html>
@@ -98,7 +93,6 @@
                 </ul>
             </div>
         </div>
-        <!---  END OF NAVIGATION BAR -->
 <?php echo $_SERVER['PHP_SELF']; ?>
 <?php if (!empty($email)) echo $email; ?>
 
@@ -120,34 +114,9 @@
             <a href="#" class="forgot-password">
                 Forgot the password?
             </a>
-        </div><!-- /card-container -->
-    </div><!-- /container -->
-
-
-       <!-- <div id="main" class="container text-center">
-            <div class="row">
-                <div class="col-sm-7">
-                    <h3>Sign In</h3>
-                    <form method="post" action="php">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" value="php" /><br />
-                        <label for="password">Password:</label>
-                        <input type="password" name="password" />
-                        <input type="submit" value="Log In" name="submit" />
-                    </form>
-                    <a href="sign_up.php">Sign Up</a>
-                    <a href="logout.php">Log Out</a>
-                </div>
-            </div>
         </div>
-        -->
-
-        <!-- /#wrapper -->
-
-        <!-- jQuery -->
+    </div>
         <script src="js/jquery.js"></script>
-
-        <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
 
         </body>
@@ -157,7 +126,6 @@
 
         <?php
     } else {
-        // Confirm the successful log-in
         echo('<p class="login">You are logged in as ' . $_SESSION['email'] . '.</p>');
         echo('<a href="logout.php">Log Out</a>');
     }
