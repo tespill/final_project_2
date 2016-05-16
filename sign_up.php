@@ -131,24 +131,6 @@
             <a id="signin" href="sign_in.php">Sign In</a>
             <a id="signout" href="logout.php">Log Out</a>
         </div>
-        <div id="main" class="container text-center">
-            <div class="row">
-                <div class="col-sm-7">
-                    <h3>Sign In</h3>
-                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                        <label for="email">Email:</label>
-                        <input type="text" id="email" name="email" value="<?php if (!empty($email)) echo $email; ?>" /><br />
-                        <label for="password1">Password:</label>
-                        <input type="password" id="password1" name="password1" /><br />
-                        <label for="password2">Password (retype):</label>
-                        <input type="password" id="password2" name="password2" /><br />
-                        <input type="submit" value="Sign Up" name="submit" />
-                    </form>
-                    <a href="sign_up.php">Sign Up</a>
-                    <a href="logout.php">Log Out</a>
-                </div>
-            </div>
-        </div>
         </body>
 </html>
 <?php
