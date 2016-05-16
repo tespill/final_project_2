@@ -1,77 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SideKicK</title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-
-
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-
-</head>
-
 <body>
 
-<div id="wrapper">
-
-    <!-- Sidebar -->
+<!-- START OF NAVIGATION BAR -->
+<div id="navigation">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
                 <a href="#">
-                    SideKicK
+                    <img src="">
                 </a>
             </li>
             <li>
-                <a href="#">SignUp</a>
+                <a href="index.php">Home</a>
             </li>
             <li>
-                <a href="#">Log in</a>
+                <a href="sign_in.php">Log In</a>
             </li>
             <li>
-                <a href="#">Log Out</a>
+                <a href="sign_up.php">Sign Up</a>
             </li>
             <li>
-                <a href="#">ext.</a>
+                <a href="profile.php">My Profile</a>
             </li>
             <li>
-                <a href="#">ext.</a>
+                <a href="edit_profile.php">Edit Profile</a>
             </li>
             <li>
-                <a href="#">ext.</a>
-            </li>
-            <li>
-                <a href="#">ext.</a>
+                <a href="logout.php">Log Out</a>
             </li>
         </ul>
     </div>
+</div>
+<!---  END OF NAVIGATION BAR -->
 
-    <div id="page-content-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Template</h1>
-                    <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                </div>
-            </div>
-        </div>
+<div id="main" class="container text-center">
+    <!-- JQuery Slider [responsiveslides.com] -->
+    <div id="slider">
+        <ul class="rslides">
+            <li><img src="slider1.jpg" alt="slider1"></li>
+            <li><img src="slider2.jpg" alt="slider2"></li>
+            <li><img src="slider3.jpg" alt="slider3"></li>
+        </ul>
     </div>
-    <!-- /#page-content-wrapper -->
+    <br/><hr/><br/>
+    <!-- End of slider -->
+
 
 </div>
+
+<footer class="container-fluid text-center">
+    <p>Footer Text</p>
+</footer>
+
 <!-- /#wrapper -->
 
 <!-- jQuery -->
@@ -80,14 +59,12 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 
-<!-- Menu Toggle Script -->
+<!-- Slider -->
 <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
+    $(function() {
+        $(".rslides").responsiveSlides(); // Starts slider
     });
 </script>
 
 </body>
-
 </html>
