@@ -54,9 +54,13 @@
             }
         }
     ?>
-<<<<<<< HEAD
+        <html>
+        <head>
+            <link rel="stylesheet" type="text/css" href="sign_up.css">
+            <script src="js/jquery.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+        </head>
         <body>
-        <!-- START OF NAVIGATION BAR -->
         <div id="navigation">
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
@@ -86,12 +90,6 @@
                 </ul>
             </div>
         </div>
-        <!---  END OF NAVIGATION BAR -->
-=======
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="sign_up.css">
-</head>
         <div class="container">
             <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-horizontal" role="form">
                 <h2>Registration Form</h2>
@@ -129,12 +127,10 @@
                         <button type="submit" class="btn btn-primary btn-block">Register</button>
                     </div>
                 </div>
-            </form> <!-- /form -->
+            </form>
             <a id="signin" href="sign_in.php">Sign In</a>
             <a id="signout" href="logout.php">Log Out</a>
-        </div> <!-- ./container -->
->>>>>>> ticket_5
-
+        </div>
         <div id="main" class="container text-center">
             <div class="row">
                 <div class="col-sm-7">
@@ -153,37 +149,8 @@
                 </div>
             </div>
         </div>
-
-<<<<<<< HEAD
-        <footer class="container-fluid text-center">
-            <p>Footer Text</p>
-        </footer>
-
-        <!-- /#wrapper -->
-
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
-
         </body>
-=======
 </html>
-    <!--<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" value="<?php if (!empty($email)) echo $email; ?>" /><br />
-            <label for="password1">Password:</label>
-            <input type="password" id="password1" name="password1" /><br />
-            <label for="password2">Password (retype):</label>
-            <input type="password" id="password2" name="password2" /><br />
-        <input type="submit" value="Sign Up" name="submit" />
-    </form>
-
-    <a href="sign_in.php">Sign In</a>
-    <a href="logout.php">Log Out</a>
-    -->
->>>>>>> ticket_5
 <?php
     } else {
         // They are already logged in
