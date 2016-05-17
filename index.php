@@ -63,26 +63,24 @@ require_once('structure/header.php');
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
                 <li data-target="#myCarousel" data-slide-to="2"></li>
-                <li data-target="#myCarousel" data-slide-to="3"></li>
+
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="slider1.jpg" alt="Chania" width="460" height="345">
+                    <img src="slider1.jpg" alt="Friend1" width="460" height="345">
                 </div>
 
                 <div class="item">
-                    <img src="slider2.jpg" alt="Chania" width="460" height="345">
+                    <img src="slider2.jpg" alt="Friend2" width="460" height="345">
                 </div>
 
                 <div class="item">
-                    <img src="slider3.jpg" alt="Flower" width="460" height="345">
+                    <img src="slider3.jpg" alt="Friend3" width="460" height="345">
                 </div>
 
-                <div class="item">
-                    <img src="slider4.jpg" alt="Flower" width="460" height="345">
-                </div>
+
             </div>
 
             <!-- Left and right controls -->
@@ -95,6 +93,10 @@ require_once('structure/header.php');
                 <span class="sr-only">Next</span>
             </a>
         </div>
+        <h1 align="center">Welcome!</h1>
+        <p>Here at SideKick, we put together a simple solution to the age old issue of loneliness. We have developed a simple process to find two people who have the highest chance of enjoying the same thing. These people are then informed that a match has been found for them.</p>
+        <p>We've made it simple to enter in information about you that helps us determine your personality traits.</p>
+
     </div>
 
 
