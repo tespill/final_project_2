@@ -94,24 +94,23 @@
             <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-horizontal" role="form">
                 <h2>Registration Form</h2>
                 <div class="form-group">
-                    <label for="firstName" class="col-sm-3 control-label">Full Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="firstName" placeholder="Full Name" class="form-control" required autofocus>
-                        <div class="help-block with-errors"></div>
-                        <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" id="email" placeholder="Email" value="<?php if (!empty($email)) echo $email; ?>" class="form-control" required>
+                        <input type="email" name="email" id="email" placeholder="Email" value="<?php if (!empty($email)) echo $email; ?>" class="form-control" required>
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Password</label>
                     <div class="col-sm-9">
-                        <input type="password" id="password" placeholder="Password" class="form-control" required>
+                        <input type="password" name="password1" id="password1" placeholder="Password" class="form-control" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password" class="col-sm-3 control-label">Confirm Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" name="password2" id="password2" placeholder="Password" class="form-control" required>
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
