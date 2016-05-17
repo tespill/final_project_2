@@ -90,7 +90,8 @@
                 </ul>
             </div>
         </div>
-        <div class="container">
+        
+        <div id="main" class="container">
             <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-horizontal" role="form">
                 <h2>Registration Form</h2>
                 <div class="form-group">
