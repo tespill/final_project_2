@@ -110,14 +110,7 @@
                 <div class="form-group">
                     <label for="confirm_password" class="col-sm-3 control-label">Confirm Password</label>
                     <div class="col-sm-9">
-                        <input type="password" name="password2" id="password2" placeholder="Password" class="form-control" required>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
-                    <div class="col-sm-9">
-                        <input type="date" id="birthDate" class="form-control" required>
+                        <input type="password" name="password2" id="password2" placeholder="Confirm Password" class="form-control" required>
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
@@ -128,7 +121,6 @@
                 </div>
             </form>
             <a id="signin" href="sign_in.php">Sign In</a>
-            <a id="signout" href="logout.php">Log Out</a>
         </div>
         </body>
 </html>
