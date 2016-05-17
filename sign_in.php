@@ -62,6 +62,11 @@
     // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
     if (empty($_SESSION['user_id'])) {
         ?>
+        <html>
+        <head>
+            <link rel="stylesheet" type="text/css" href="sign_in.css">
+            <script src="sign_in.js"></script>
+        </head>
         <body>
         <!-- START OF NAVIGATION BAR -->
         <div id="navigation">
@@ -95,31 +100,27 @@
         </div>
         <!---  END OF NAVIGATION BAR -->
 
-        <div id="main" class="container text-center">
-            <div class="row">
-                <div class="col-sm-7">
-                    <h3>Sign In</h3>
-                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" value="<?php if (!empty($email)) echo $email; ?>" /><br />
-                        <label for="password">Password:</label>
-                        <input type="password" name="password" />
-                        <input type="submit" value="Log In" name="submit" />
-                    </form>
-                    <a href="sign_up.php">Sign Up</a>
-                    <a href="logout.php">Log Out</a>
-                </div>
-            </div>
+        <div class="container">
+            <div id="stuff" class="card card-container">
+                <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+                <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+                <p id="profile-name" class="profile-name-card"></p>
+                <form class="form-signin">
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <div id="remember" class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                </form><!-- /form -->
+                <a href="#" class="forgot-password">
+                    Forgot the password?
+                </a>
+            </div><!-- /card-container -->
         </div>
-
-
-        <footer class="container-fluid text-center">
-            <p>Footer Text</p>
-        </footer>
-
-        <!-- /#wrapper -->
-
-        <!-- jQuery -->
         <script src="js/jquery.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
