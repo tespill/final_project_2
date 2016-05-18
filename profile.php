@@ -78,6 +78,11 @@
             <li>
                 <a href="logout.php">Log Out</a>
             </li>
+            <?php
+            if (isset($_SESSION['email']) && ($_SESSION['email']) == 'admin@sidekick.com') {
+                echo '<li><a href="admin1.php">Admin Page</a></li>';
+            }
+            ?>
         </ul>
     </div>
 </div>
@@ -91,10 +96,7 @@
                 <div class="col-sm-12">
                     <div class="panel panel-default text-left">
                         <div class="panel-body">
-                            <p contenteditable="true">Status: Feeling Blue</p>
-                            <button type="button" class="btn btn-default btn-sm">
-                                <span class="glyphicon glyphicon-thumbs-up"></span> Like
-                            </button>
+                            <h1 align="center">Matches:</h1>
                         </div>
                     </div>
                 </div>

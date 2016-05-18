@@ -1,4 +1,5 @@
 <?php
+require_once('include/start_session.php');
 $title = 'SideKicK - Home';
 require_once('structure/header.php');
 
@@ -46,9 +47,11 @@ require_once('structure/header.php');
             <li>
                 <a href="logout.php">Log Out</a>
             </li>
-            <li>
-                <a href="admin1.php">Admin Page</a>
-            </li>
+            <?php
+                if (isset($_SESSION['email']) && ($_SESSION['email']) == 'admin@sidekick.com') {
+                    echo '<li><a href="admin1.php">Admin Page</a></li>';
+                }
+            ?>
         </ul>
     </div>
 </div>

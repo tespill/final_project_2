@@ -97,6 +97,11 @@
             <li>
                 <a href="logout.php">Log Out</a>
             </li>
+            <?php
+            if (isset($_SESSION['email']) && ($_SESSION['email']) == 'admin@sidekick.com') {
+                echo '<li><a href="admin1.php">Admin Page</a></li>';
+            }
+            ?>
         </ul>
     </div>
 </div>
