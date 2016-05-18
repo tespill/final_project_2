@@ -7,7 +7,8 @@
 
     // Make sure the user is logged in before going any further.
     if (!isset($_SESSION['user_id'])) {
-        echo '<p class="login">Please <a href="login.php">log in</a> to access this page.</p>';
+        $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/sign_in.php';
+        header('Location: ' . $home_url);
         exit();
     }
 
@@ -90,9 +91,6 @@
                 </li>
                 <li>
                     <a href="profile.php">My Profile</a>
-                </li>
-                <li>
-                    <a href="edit_profile.php">Edit Profile</a>
                 </li>
                 <li>
                     <a href="logout.php">Log Out</a>
