@@ -7,7 +7,8 @@
 
     // Make sure the user is logged in before going any further.
     if (!isset($_SESSION['user_id'])) {
-        echo '<p class="login">Please <a href="login.php">log in</a> to access this page.</p>';
+        $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/sign_in.php';
+        header('Location: ' . $home_url);
         exit();
     }
 
@@ -61,7 +62,12 @@
             echo '<p>There was a problem accessing your profile.</p>';
         }
     }
-    echo $message;
+
+    // Pull all of their matches from the database
+    $query = "SELECT i.username, u.id as user_id, i.picture, i.bio, CONCAT(name_first, ' ', name_last) as name FROM user u LEFT JOIN user_info i ON u.id = i.user_id WHERE 1 = 1";
+    $stmt = $dbh->prepare($query);
+    $stmt->execute();
+    $matches = $stmt->fetchAll();
 ?>
 <body>
     <!-- START OF NAVIGATION BAR -->
@@ -86,9 +92,6 @@
                     <a href="profile.php">My Profile</a>
                 </li>
                 <li>
-                    <a href="edit_profile.php">Edit Profile</a>
-                </li>
-                <li>
                     <a href="logout.php">Log Out</a>
                 </li>
             </ul>
@@ -104,68 +107,33 @@
                     <div class="col-sm-12">
                         <div class="panel panel-default text-left">
                             <div class="panel-body">
-                                <p contenteditable="true">Status: Feeling Blue</p>
-                                <button type="button" class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-thumbs-up"></span> Like
-                                </button>
+                                <h2 align="center">Matches:</h2>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="well">
-                            <p>John</p>
-                            <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
+                <?php foreach($matches as $match){ ?>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="well">
+                                <p><a href="profile.php?user_id=<?php echo $match['user_id'] ?>"><?php if (!empty($match['username'])) echo $match['username']; else echo '<i>No Username</i>' ?></a></p>
+                                <?php if (!empty($match['picture'])) {
+                                    echo "<img src='uploads/" . $match['picture'] . " class='img-circle' height='55' width='55' alt='Avatar' />";
+                                } else {
+                                    echo '<img src="images/nopic.jpg" class="img-circle" height="55" width="55" alt="Avatar" />';
+                                } ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="well">
+                                <p><?php if (!empty($match['bio'])) echo $match['bio']; else echo '<i>No Bio</i>' ?></p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-9">
-                        <div class="well">
-                            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="well">
-                            <p>Bo</p>
-                            <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-                        </div>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="well">
-                            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="well">
-                            <p>Jane</p>
-                            <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-                        </div>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="well">
-                            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="well">
-                            <p>Anja</p>
-                            <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-                        </div>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="well">
-                            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
+
             <div id="right" class="col-sm-2 well">
                 <div class="thumbnail">
                     <?php if (!empty($row['picture'])) {
@@ -184,12 +152,6 @@
                     </textarea>
                 <input type="submit" value="Save Changes" name="submit" />
                 </form>
-
-
-
-                <div class="well">
-                    <p>ADS</p>
-                </div>
             </div>
         </div>
     </div>

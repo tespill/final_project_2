@@ -73,9 +73,6 @@
                 <a href="profile.php">My Profile</a>
             </li>
             <li>
-                <a href="edit_profile.php">Edit Profile</a>
-            </li>
-            <li>
                 <a href="logout.php">Log Out</a>
             </li>
         </ul>
@@ -91,15 +88,12 @@
                 <div class="col-sm-12">
                     <div class="panel panel-default text-left">
                         <div class="panel-body">
-                            <p contenteditable="true">Status: Feeling Blue</p>
-                            <button type="button" class="btn btn-default btn-sm">
-                                <span class="glyphicon glyphicon-thumbs-up"></span> Like
-                            </button>
+                            <h2 align="center">Matches:</h2>
                         </div>
                     </div>
                 </div>
             </div>
-            <?php foreach($matches as $match){ ?>
+            <?php foreach($matches as $match) { ?>
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="well">

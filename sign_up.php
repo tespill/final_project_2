@@ -82,9 +82,6 @@
                         <a href="profile.php">My Profile</a>
                     </li>
                     <li>
-                        <a href="edit_profile.php">Edit Profile</a>
-                    </li>
-                    <li>
                         <a href="logout.php">Log Out</a>
                     </li>
                 </ul>

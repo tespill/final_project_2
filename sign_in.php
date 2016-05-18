@@ -85,9 +85,6 @@
                         <a href="profile.php">My Profile</a>
                     </li>
                     <li>
-                        <a href="edit_profile.php">Edit Profile</a>
-                    </li>
-                    <li>
                         <a href="logout.php">Log Out</a>
                     </li>
                 </ul>
@@ -107,7 +104,6 @@
                         <input type="submit" value="Log In" name="submit" />
                     </form>
                     <a href="sign_up.php">Sign Up</a>
-                    <a href="logout.php">Log Out</a>
                 </div>
             </div>
         </div>
