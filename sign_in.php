@@ -116,9 +116,6 @@
                     </div>
                     <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
                 </form><!-- /form -->
-                <a href="#" class="forgot-password">
-                    Forgot the password?
-                </a>
             </div><!-- /card-container -->
         </div>
         <script src="js/jquery.js"></script>
